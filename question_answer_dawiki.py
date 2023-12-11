@@ -70,7 +70,7 @@ ds = ds.shuffle(seed=42)
 print("Collecting all available shards.")
 shards_folder = Path("dawiki_qa/shards/")
 shards_folder.mkdir(exist_ok=True, parents=True)
-shards = glob.glob(shards_folder.joinpath("*.jsonl"))
+shards = glob(str(shards_folder.joinpath("*.jsonl")))
 done_ids = get_shard_ids(shards)
 
 for shard_id in trange(NUM_SHARDS, desc="Generating Question-Answer pairs for all shards."):
