@@ -8,6 +8,7 @@ model = AutoModelForCausalLM.from_pretrained("HuggingFaceH4/zephyr-7b-beta")
 model.to("cuda")
 
 ds = load_dataset("kardosdrur/dawiki_title_content", split="all")
+ds = ds.shuffle()
 
 def generate_dataset(passages, model, tokenizer):
     for passage in passages:
