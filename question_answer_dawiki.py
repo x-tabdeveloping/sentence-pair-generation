@@ -52,7 +52,7 @@ def generate_dataset(passages, model, tokenizer):
             continue
 
 def push_all_shards(shards_folder: Path, repo: str):
-    shards = glob.glob(shards_folder.joinpath("*.jsonl"))
+    shards = glob(str(shards_folder.joinpath("*.jsonl")))
     data = load_shards(shards)
     ds = Dataset.from_list(data)
     ds.push_to_hub(repo)
